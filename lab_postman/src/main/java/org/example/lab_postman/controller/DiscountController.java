@@ -1,5 +1,6 @@
-import config.EarlyBirdDiscountService;
-import org.springframework.format.annotation.DateTimeFormat;
+package org.example.lab_postman.controller;
+
+import org.example.lab_postman.service.EarlyBirdDiscountService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +16,7 @@ public class DiscountController{
     public DiscountController(Optional<EarlyBirdDiscountService> discountService){
         this.discountService= discountService.orElse(null);
     }
-    @GetMapping(" /api/discount")
+    @GetMapping("/api/discount")
     public ResponseEntity<String> getDiscount(@RequestParam double price, @RequestParam LocalDate bookingDate, @RequestParam  LocalDate eventDate)
     {
         if(discountService==null){
